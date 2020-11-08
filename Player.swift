@@ -14,6 +14,7 @@ class Player: SKSpriteNode {
         let texture = SKTexture(imageNamed: "player-fly")
         super.init(texture: texture, color: .clear, size: texture.size())
         zPosition = 1.0
+        setScale(0.7)
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -14,7 +14,7 @@ class GameScene: SKScene {
     //MARK: - PROPERTIES
      var background = SKSpriteNode()
     
-    var player = Player()
+    var player: Player = Player()
     
     //MARK: - SYSTEMS
     
@@ -45,6 +45,7 @@ extension GameScene {
             bg.name = "BG"
             bg.position = CGPoint(x: frame.width/2.0, y: CGFloat(i)*bg.frame.height + frame.height/2.0)
             addChild(bg)
+            bg.zPosition = 1
         }
     }
     
@@ -64,5 +65,36 @@ extension GameScene {
     func createPlayer() {
         player.position = CGPoint(x: frame.width/2.0, y: frame.height * 0.3)
         addChild(player)
+        player.zPosition = 5
+        player = childNode(withName: "Player") as! SKSpriteNode as! Player
     }
+    
+    // TODO: Enemies
+    
+    func createEnemy() {
+        let enemy: Enemy
+        let type: EnemySettings
+        switch Int(arc4random() % 100) {
+        case 0...75:
+            enemy = Enemy.createEnemySmall()
+            type = .small
+        case 75...97:
+            enemy = Enemy.createEnemyMedium()
+            type = .medium
+        default:
+            enemy = Enemy.createEnemyLarge()
+            type = .large
+        }
+        
+        enemy.type = type
+        
+        let enemyF = enemy.frame
+        let randomX = CGFloat.random(min: enemyF.width, max: frame.width - enemyF.height)
+        enemy.position = CGPoint(x: randomX,
+                                 y: frame.height + enemyF.height/2.0)
+        addChild(enemy)
+        
+    }
+    
+    
 }
