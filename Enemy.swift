@@ -23,7 +23,7 @@ class Enemy: SKSpriteNode {
         enemy.health = 2
         enemy.type = .small
         enemy.zPosition = 5.0
-        enemy.setScale(0.5)
+        enemy.setScale(0.3)
         return enemy
     }
     class func createEnemyMedium() -> Enemy {
@@ -31,7 +31,7 @@ class Enemy: SKSpriteNode {
     enemy.health = 5
     enemy.type = .medium
     enemy.zPosition = 5.0
-    enemy.setScale(0.5)
+    enemy.setScale(0.4)
     return enemy
     }
     class func createEnemyLarge() -> Enemy {
