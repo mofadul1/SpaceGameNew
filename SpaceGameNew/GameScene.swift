@@ -53,6 +53,11 @@ extension GameScene {
         createPlayer()
         spawnEnemies()
         createBullet()
+        setupPhysics()
+    }
+    
+    func setupPhysics() {
+        physicsWorld.gravity = .zero
     }
     
     // TODO: - BACKGROUND
@@ -139,10 +144,10 @@ extension GameScene {
     
     func createBullet() {
         let bullet = SKSpriteNode(imageNamed: "bullet")
-        bullet.setScale(0.4)
+        bullet.setScale(0.3)
         bullet.position = player.position
         bullet.physicsBody = SKPhysicsBody(texture: bullet.texture!, size: bullet.size)
-        bullet.physicsBody!.usesPreciseCollisionDetection = true
+        //bullet.physicsBody!.usesPreciseCollisionDetection = true
         bullet.physicsBody!.allowsRotation = false
         bullet.physicsBody!.categoryBitMask = PhysicsCategory.Bullet
         bullet.physicsBody!.collisionBitMask = PhysicsCategory.Enemy
