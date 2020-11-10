@@ -19,27 +19,32 @@ class Enemy: SKSpriteNode {
     var type: EnemySettings = .small
     
     class func createEnemySmall() -> Enemy {
-        let enemy = Enemy(imageNamed: "enemy1-fly")
-        enemy.health = 2
-        enemy.type = .small
-        enemy.zPosition = 5.0
-        enemy.setScale(0.3)
+        let enemy = setupEnemies("enemy1-fly", health: 5, type: .medium, scale: 0.3)
+       // enemy.setScale(0.3)
         return enemy
     }
     class func createEnemyMedium() -> Enemy {
-    let enemy = Enemy(imageNamed: "enemy2-fly")
-    enemy.health = 5
-    enemy.type = .medium
-    enemy.zPosition = 5.0
-    enemy.setScale(0.4)
+        let enemy = setupEnemies("enemy2-fly", health: 5, type: .medium, scale: 0.6)
+    //enemy.setScale(0.5)
     return enemy
     }
     class func createEnemyLarge() -> Enemy {
-    let enemy = Enemy(imageNamed: "enemy3-fly")
-    enemy.health = 9
-    enemy.type = .large
-    enemy.zPosition = 5.0
-    enemy.setScale(0.5)
+    let enemy = setupEnemies("enemy3-fly", health: 9, type: .large)
+   // enemy.setScale(0.8)
     return enemy
+    }
+    
+    class func setupEnemies(_ imgNamed: String, health: Int, type: EnemySettings, scale: CGFloat = 1.0) -> Enemy {
+        let sprite = Enemy(imageNamed: imgNamed)
+        sprite.type = type
+        sprite.health = health
+        sprite.zPosition = 5.0
+        sprite.setScale(scale)
+        sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
+        sprite.physicsBody!.allowsRotation = false
+        sprite.physicsBody!.categoryBitMask = PhysicsCategory.Enemy
+        sprite.physicsBody!.collisionBitMask = PhysicsCategory.Bullet | PhysicsCategory.Player
+        sprite.physicsBody!.contactTestBitMask = PhysicsCategory.Bullet | PhysicsCategory.Player
+        return sprite
     }
 }

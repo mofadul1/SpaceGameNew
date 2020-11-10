@@ -20,9 +20,24 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         background = childNode(withName: "Background") as! SKSpriteNode
-       // createEnemy()
+        createEnemy()
         setupNodes()
         }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        guard let touch = touches.first else { return }
+        let location = touch.location(in: self)
+        player.run(.move(to: location, duration: 0.1))
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        guard let touch = touches.first else { return }
+        let location = touch.location(in: self)
+        player.position = location
+    }
+    
     
     override func update(_ currentTime: TimeInterval) {
         moveBG()
@@ -34,9 +49,10 @@ extension GameScene {
     // TODO - BACKGROUND
     
     func setupNodes() {
-      //  createBG()
+     //   createBG()
         createPlayer()
         spawnEnemies()
+        createBullet()
     }
     
     // TODO: - BACKGROUND
@@ -68,6 +84,13 @@ extension GameScene {
     func createPlayer() {
         player.position = CGPoint(x: frame.width/2.0, y: frame.height * 0.3)
         addChild(player)
+        
+        run(.repeatForever(.sequence(
+            [.wait(forDuration: 0.2), .run {
+            [weak self] in
+            self?.createBullet()
+            }])))
+        
        // player.zPosition = 5
        // player = childNode(withName: "Player") as! SKSpriteNode as! Player
     }
@@ -111,5 +134,23 @@ extension GameScene {
             }
         ])))
     }
+    
+    //TODO: - Bullet
+    
+    func createBullet() {
+        let bullet = SKSpriteNode(imageNamed: "bullet")
+        bullet.setScale(0.4)
+        bullet.position = player.position
+        bullet.physicsBody = SKPhysicsBody(texture: bullet.texture!, size: bullet.size)
+        bullet.physicsBody!.usesPreciseCollisionDetection = true
+        bullet.physicsBody!.allowsRotation = false
+        bullet.physicsBody!.categoryBitMask = PhysicsCategory.Bullet
+        bullet.physicsBody!.collisionBitMask = PhysicsCategory.Enemy
+        bullet.physicsBody!.contactTestBitMask = PhysicsCategory.Enemy
+        addChild(bullet)
+        
+        let moveBy = SKAction.moveBy(x: 0.0, y: frame.height, duration: 0.5)
+        bullet.run(.repeatForever(.sequence([moveBy, .removeFromParent()])))
+        }
     
 }

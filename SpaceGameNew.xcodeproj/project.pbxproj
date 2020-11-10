@@ -17,6 +17,7 @@
 		A52CF35F2555970100D3E034 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A52CF35D2555970100D3E034 /* LaunchScreen.storyboard */; };
 		A52CF3672555971C00D3E034 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CF3662555971C00D3E034 /* Player.swift */; };
 		A52CF36A2555DD0200D3E034 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52CF3692555DD0200D3E034 /* Enemy.swift */; };
+		A5CAE44E255A53F9005EBD78 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CAE44D255A53F9005EBD78 /* Types.swift */; };
 		A5DCE1DA2557A5A90062316A /* CGFloat+Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DCE1D92557A5A90062316A /* CGFloat+Exts.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		A52CF3602555970100D3E034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A52CF3662555971C00D3E034 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		A52CF3692555DD0200D3E034 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
+		A5CAE44D255A53F9005EBD78 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		A5DCE1D92557A5A90062316A /* CGFloat+Exts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Exts.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -53,6 +55,7 @@
 				A52CF3662555971C00D3E034 /* Player.swift */,
 				A52CF3692555DD0200D3E034 /* Enemy.swift */,
 				A5DCE1D92557A5A90062316A /* CGFloat+Exts.swift */,
+				A5CAE44D255A53F9005EBD78 /* Types.swift */,
 				A52CF34D255596FE00D3E034 /* SpaceGameNew */,
 				A52CF34C255596FE00D3E034 /* Products */,
 			);
@@ -158,6 +161,7 @@
 				A52CF3672555971C00D3E034 /* Player.swift in Sources */,
 				A52CF36A2555DD0200D3E034 /* Enemy.swift in Sources */,
 				A5DCE1DA2557A5A90062316A /* CGFloat+Exts.swift in Sources */,
+				A5CAE44E255A53F9005EBD78 /* Types.swift in Sources */,
 				A52CF355255596FE00D3E034 /* GameScene.swift in Sources */,
 				A52CF357255596FE00D3E034 /* GameViewController.swift in Sources */,
 				A52CF34F255596FE00D3E034 /* AppDelegate.swift in Sources */,
