@@ -22,8 +22,8 @@ class Player: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     func setupPhysics(_ texture: SKTexture) {
-        physicsBody = SKPhysicsBody(texture: texture, size: texture.size())
-        physicsBody!.allowsRotation = false
+        physicsBody = SKPhysicsBody(texture: texture, size: size)
+    //    physicsBody!.allowsRotation = false
         physicsBody!.categoryBitMask = PhysicsCategory.Player
         physicsBody!.collisionBitMask = PhysicsCategory.None
         physicsBody!.contactTestBitMask = PhysicsCategory.Enemy

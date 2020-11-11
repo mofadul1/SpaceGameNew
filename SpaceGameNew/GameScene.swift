@@ -119,6 +119,7 @@ extension GameScene {
             enemy = Enemy.createEnemyLarge()
             type = .large
             duration = CGFloat.random(in: 7...9)
+            break
         }
         
         enemy.type = type
@@ -147,11 +148,15 @@ extension GameScene {
         bullet.setScale(0.3)
         bullet.position = player.position
         bullet.physicsBody = SKPhysicsBody(texture: bullet.texture!, size: bullet.size)
-        //bullet.physicsBody!.usesPreciseCollisionDetection = true
-        bullet.physicsBody!.allowsRotation = false
-        bullet.physicsBody!.categoryBitMask = PhysicsCategory.Bullet
-        bullet.physicsBody!.collisionBitMask = PhysicsCategory.Enemy
-        bullet.physicsBody!.contactTestBitMask = PhysicsCategory.Enemy
+        if let physicsBody = bullet.physicsBody
+        {
+            physicsBody.usesPreciseCollisionDetection = true
+            physicsBody.allowsRotation = false
+            physicsBody.categoryBitMask = PhysicsCategory.Bullet
+            physicsBody.collisionBitMask = PhysicsCategory.None
+            physicsBody.contactTestBitMask = PhysicsCategory.Enemy
+        }
+       
         addChild(bullet)
         
         let moveBy = SKAction.moveBy(x: 0.0, y: frame.height, duration: 0.5)
